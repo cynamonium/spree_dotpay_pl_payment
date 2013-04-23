@@ -1,5 +1,5 @@
 class PaymentMethod::DotpayPl < Spree::PaymentMethod
-  attr_accessible: :preferred_account_id, :preferred_pin, :preferred_url, :preferred_type, :preferred_currency, :preferred_language, :preferred_dotpay_server_1, :preferred_dotpay_server_2
+  attr_accessible :preferred_account_id, :preferred_pin, :preferred_url, :preferred_type, :preferred_currency, :preferred_language, :preferred_dotpay_server_1, :preferred_dotpay_server_2
   preference :account_id, :string
   preference :pin, :string
   preference :url, :string, :default => "https://ssl.dotpay.pl/"
