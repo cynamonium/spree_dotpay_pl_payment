@@ -14,7 +14,7 @@
   <%= hidden_field_tag 'email', (@order.email || @order.user.try(:email)) %>
 
   <%= submit_tag t('dotpay_pl_submit') %>
-    
-<script type="text/javascript">
+
+<script>
   $("form").submit();
 </script>
