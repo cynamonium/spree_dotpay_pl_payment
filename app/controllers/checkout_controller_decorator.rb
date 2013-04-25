@@ -6,6 +6,7 @@ Spree::CheckoutController.class_eval do
 
   def redirect_for_dotpay_pl
     return unless params[:state] == "payment"
+    session[:dotpay_channel] = params[:channel]
     @payment_method = Spree::PaymentMethod.find(params[:order][:payments_attributes].first[:payment_method_id])
     if @payment_method && @payment_method.kind_of?(PaymentMethod::DotpayPl)
       redirect_to main_app.gateway_dotpay_pl_path(:gateway_id => @payment_method.id, :order_id => @order.id)
