@@ -16,7 +16,7 @@ class Gateway::DotpayPlController < Spree::BaseController
     else
       @bill_address, @ship_address = @order.bill_address, (@order.ship_address || @order.bill_address)
     end
-
+    @channel = session[:dotpay_channel]
     render(:layout => false)
   end
 
