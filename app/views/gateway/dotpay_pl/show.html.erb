@@ -27,14 +27,10 @@
     <%= hidden_field_tag 'URL', main_app.gateway_dotpay_pl_complete_url(@order.number) %>
     <%= hidden_field_tag 'typ', @gateway.preferred_type %>
     <%= hidden_field_tag 'currency', @gateway.preferred_currency %>
-    <%= hidden_field_tag 'lang', @gateway.preferred_language %>
-    <%= hidden_field_tag 'forename', @bill_address.firstname %>
-    <%= hidden_field_tag 'lastname', @bill_address.lastname %>
-    <%= hidden_field_tag 'street', @bill_address.address1 %>
-    <%= hidden_field_tag 'street_n1', @bill_address.address2 %>
-    <%= hidden_field_tag 'city', @bill_address.city %>
-    <%= hidden_field_tag 'postcode', @bill_address.zipcode %>
-    <%= hidden_field_tag 'country', @bill_address.country.iso3 %>
+    <%= hidden_field_tag 'lang', "pl"%>
+    <%= hidden_field_tag 'forename', @order.user.try(:firstname)%>
+    <%= hidden_field_tag 'lastname', @order.user.try(:lastname)%>
+    <%= hidden_field_tag 'country', "pl" %>
     <%= hidden_field_tag 'email', (@order.email || @order.user.try(:email)) %>
 
     <%= submit_tag t('dotpay_pl_submit') %>
