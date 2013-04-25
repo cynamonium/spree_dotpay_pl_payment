@@ -1,5 +1,5 @@
 
-  <%= form_tag @gateway.preferred_url, :method => "post" do %>
+  <%= form_tag @gateway.preferred_url, :id => "dotpay", :method => "post" do %>
 
     <%= hidden_field_tag 'id', @gateway.preferred_account_id %>
     <%= hidden_field_tag 'opis', "#{Spree::Config[:site_name]} Order: #{@order.number}" %>
@@ -18,7 +18,9 @@
   <% end %>
 
 <script>
-  $(document).ready(function(){
-    $("form").submit();
-  });
+   function exec () {
+        var frm = document.getElementById("dotpay");
+        frm.submit();
+    }
+   window.onload = exec;
 </script>
