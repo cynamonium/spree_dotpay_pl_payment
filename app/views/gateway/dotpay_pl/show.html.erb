@@ -9,9 +9,9 @@
     <%= hidden_field_tag 'typ', @gateway.preferred_type %>
     <%= hidden_field_tag 'currency', @gateway.preferred_currency %>
     <%= hidden_field_tag 'lang', "pl"%>
-    <% if @channel %>
-      <%= @channel %>
-      <%= hidden_field_tag 'channel', @channel %>
+    <% if session[:dotpay_channel] %>
+      <%= session[:dotpay_channel] %>
+      <%= hidden_field_tag 'channel', session[:dotpay_channel] %>
     <% end %>
     <%= hidden_field_tag 'forename', @order.user.try(:firstname)%>
     <%= hidden_field_tag 'lastname', @order.user.try(:lastname)%>
