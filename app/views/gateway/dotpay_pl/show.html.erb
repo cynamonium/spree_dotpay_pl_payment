@@ -10,7 +10,6 @@
     <%= hidden_field_tag 'currency', @gateway.preferred_currency %>
     <%= hidden_field_tag 'lang', "pl"%>
     <% if @channel %>
-      <%= @channel %>
       <%= hidden_field_tag 'channel', @channel %>
     <% end %>
     <%= hidden_field_tag 'forename', @order.user.try(:firstname)%>

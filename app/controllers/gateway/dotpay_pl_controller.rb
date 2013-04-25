@@ -17,10 +17,10 @@ class Gateway::DotpayPlController < Spree::BaseController
       @bill_address, @ship_address = @order.bill_address, (@order.ship_address || @order.bill_address)
     end
 
-    if params[:channel]
-      @channel = params[:channel]
+    if session[:dotpay_channel]
+      @channel = session[:dotpay_channel]
     end
-    
+
     render(:layout => false)
   end
 
