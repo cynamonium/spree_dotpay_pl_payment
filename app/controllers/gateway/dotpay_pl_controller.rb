@@ -16,6 +16,9 @@ class Gateway::DotpayPlController < Spree::BaseController
     else
       @bill_address, @ship_address = @order.bill_address, (@order.ship_address || @order.bill_address)
     end
+    if params[:channel]?
+      @channel = params[:channel]
+    end
     render(:layout => false)
   end
 
