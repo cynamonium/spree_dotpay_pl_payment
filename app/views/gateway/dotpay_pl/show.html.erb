@@ -11,10 +11,11 @@
     <%= hidden_field_tag 'lang', "pl"%>
     <%= hidden_field_tag 'forename', @order.user.try(:firstname)%>
     <%= hidden_field_tag 'lastname', @order.user.try(:lastname)%>
-    <%= hidden_field_tag 'country', "pl" %>
+    <%= hidden_field_tag 'country', "POL" %>
     <%= hidden_field_tag 'email', (@order.email || @order.user.try(:email)) %>
 
-    <%= submit_tag t('dotpay_pl_submit') %>
+    <%= submit_tag t('dotpay_pl_submit'), :style => "display: none;" %>
+    <p>trwa przekierowanie do strony płatności...</p>
   <% end %>
 
 <script>
