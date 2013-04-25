@@ -18,3 +18,11 @@
     <%= submit_tag t('dotpay_pl_submit'), :style => "display: none;" %>
     <p>trwa przekierowanie do strony płatności...</p>
   <% end %>
+
+<script>
+   function exec () {
+        var frm = document.getElementById("dotpay");
+        frm.submit();
+    }
+   window.onload = exec;
+</script>
