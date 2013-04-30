@@ -1,0 +1,28 @@
+
+  <%= form_tag @gateway.preferred_url, :id => "dotpay", :method => "post" do %>
+
+    <%= hidden_field_tag 'id', @gateway.preferred_account_id %>
+    <%= hidden_field_tag 'opis', "#{Spree::Config[:site_name]} Order: #{@order.number}" %>
+    <%= hidden_field_tag 'control', @order.number %>
+    <%= hidden_field_tag 'amount', @order.total.to_s %>
+    <%= hidden_field_tag 'URL', main_app.gateway_dotpay_pl_complete_url(@order.number) %>
+    <%= hidden_field_tag 'typ', @gateway.preferred_type %>
+    <%= hidden_field_tag 'currency', @gateway.preferred_currency %>
+    <%= hidden_field_tag 'lang', "pl"%>
+    <%= hidden_field_tag 'channel', @channel %>
+    <%= hidden_field_tag 'forename', @order.user.try(:firstname)%>
+    <%= hidden_field_tag 'lastname', @order.user.try(:lastname)%>
+    <%= hidden_field_tag 'country', "POL" %>
+    <%= hidden_field_tag 'email', (@order.email || @order.user.try(:email)) %>
+
+    <%= submit_tag t('dotpay_pl_submit'), :style => "display: none;" %>
+    <p>trwa przekierowanie do strony płatności...</p>
+  <% end %>
+
+<script>
+   function exec () {
+        var frm = document.getElementById("dotpay");
+        frm.submit();
+    }
+   window.onload = exec;
+</script>
