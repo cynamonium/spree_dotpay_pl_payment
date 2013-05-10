@@ -65,7 +65,7 @@ class Gateway::DotpayPlController < Spree::BaseController
       (params[:t_status].nil? ? "" : params[:t_status]))
       md5_valid = (calc_md5 == params[:md5])
 
-      if (remote_ip == @gateway.preferred_dotpay_server_1 || remote_ip == @gateway.preferred_dotpay_server_2) && md5_valid
+      if md5_valid
         valid = true #yes, it is
       else
        valid = false #no, it isn't
