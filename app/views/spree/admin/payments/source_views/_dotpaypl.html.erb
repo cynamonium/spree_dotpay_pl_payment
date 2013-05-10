@@ -1,1 +1,39 @@
-<h2>Dotpay</h2>
+<fieldset>
+  <legend>Dotpay</legend>
+
+  <table class="index">
+    <tr>
+      <th colspan="6">Płatność</th>
+    </tr>
+    <tr>
+      <td><label>Email:</label></td>
+      <td>
+        <%= payment.source.email %>
+      </td>
+    </tr>
+    <tr>
+      <td><label>ID klienta:</label></td>
+      <td>
+        <%= payment.source.customer_id %>
+      </td>
+    </tr>
+    <tr>
+      <td><label>ID płatności:</label></td>
+      <td>
+        <%= payment.source.transaction_id %>
+      </td>
+    </tr>
+    <tr>
+      <td><label>Typ:</label></td>
+      <td>
+        <%= payment.source.payment_type %>
+      </td>
+    </tr>
+    <tr>
+      <td><label>Waluta:</label></td>
+      <td>
+        <%= payment.source.currency %>
+      </td>
+    </tr>
+  </table>
+</fieldset>
