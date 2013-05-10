@@ -6,6 +6,7 @@
     <%= hidden_field_tag 'control', @order.number %>
     <%= hidden_field_tag 'amount', @order.total.to_s %>
     <%= hidden_field_tag 'URL', main_app.gateway_dotpay_pl_complete_url(@order.number) %>
+    <%= hidden_field_tag 'URLC', main_app.gateway_dotpay_pl_comeback_url(@order.number) %>
     <%= hidden_field_tag 'typ', @gateway.preferred_type %>
     <%= hidden_field_tag 'currency', @gateway.preferred_currency %>
     <%= hidden_field_tag 'lang', "pl"%>
