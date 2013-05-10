@@ -8,31 +8,31 @@
     <tr>
       <td><label>Email:</label></td>
       <td>
-        <%= payment.source.email %>
+        <%= @payment.source.email %>
       </td>
     </tr>
     <tr>
       <td><label>ID klienta:</label></td>
       <td>
-        <%= payment.source.customer_id %>
+        <%= @payment.source.customer_id %>
       </td>
     </tr>
     <tr>
       <td><label>ID płatności:</label></td>
       <td>
-        <%= payment.source.transaction_id %>
+        <%= @payment.source.transaction_id %>
       </td>
     </tr>
     <tr>
       <td><label>Typ:</label></td>
       <td>
-        <%= payment.source.payment_type %>
+        <%= @payment.source.payment_type %>
       </td>
     </tr>
     <tr>
       <td><label>Waluta:</label></td>
       <td>
-        <%= payment.source.currency %>
+        <%= @payment.source.currency %>
       </td>
     </tr>
   </table>
