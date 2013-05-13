@@ -50,17 +50,16 @@ class Gateway::DotpayPlController < Spree::BaseController
 
   # validating dotpay message
   def dotpay_pl_validate(gateway, params, remote_ip)
-    calc_md5 = Digest::MD5.hexdigest(
-      (params[:id].nil? ? "" : params[:id]) + ":" +
+
+    param_args = ":"+(params[:id].nil? ? "" : params[:id]) + ":" +
       (params[:control].nil? ? "" : params[:control]) + ":" +
       (params[:t_id].nil? ? "" : params[:t_id]) + ":" +
       (params[:amount].nil? ? "" : params[:amount]) + ":" +
-      (params[:email].nil? ? "" : params[:email]) + ":" +
-      (params[:service].nil? ? "" : params[:service]) + ":" +
-      (params[:code].nil? ? "" : params[:code]) + ":::" +
+      (params[:email].nil? ? "" : params[:email]) + ":::::" +
       (params[:t_status].nil? ? "" : params[:t_status])
-      )
-      render :text => params.inspect
+
+    calc_md5 = Digest::MD5.hexdigest(param_args)
+      render :text => param_args + calc_md5
 
       md5_valid = (calc_md5 == params[:md5])
 
