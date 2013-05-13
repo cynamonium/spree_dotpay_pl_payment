@@ -42,8 +42,6 @@ class Gateway::DotpayPlController < Spree::BaseController
         dotpay_pl_payment_new(params)
       end
       render :text => "OK"
-    else
-      render :text => "Not valid"
     end
   end
 
@@ -52,7 +50,7 @@ class Gateway::DotpayPlController < Spree::BaseController
 
   # validating dotpay message
   def dotpay_pl_validate(gateway, params, remote_ip)
-    calc_md5 = Digest::MD5.hexdigest(":" +
+    calc_md5 = Digest::MD5.hexdigest(
       (params[:id].nil? ? "" : params[:id]) + ":" +
       (params[:control].nil? ? "" : params[:control]) + ":" +
       (params[:t_id].nil? ? "" : params[:t_id]) + ":" +
@@ -62,6 +60,9 @@ class Gateway::DotpayPlController < Spree::BaseController
       (params[:code].nil? ? "" : params[:code]) + ":::" +
       (params[:t_status].nil? ? "" : params[:t_status])
       )
+      render :text => params
+      render :text => calc_md5
+
       md5_valid = (calc_md5 == params[:md5])
 
       if md5_valid
