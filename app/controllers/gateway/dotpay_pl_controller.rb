@@ -35,11 +35,11 @@ class Gateway::DotpayPlController < Spree::BaseController
 
     if dotpay_pl_validate(@gateway, params, request.remote_ip)
       if params[:t_status]=="2" # dotpay state for payment confirmed
-        dotpay_pl_payment_success(params)
+        dotpay_pl_payment_success(params, @order)
       elsif params[:t_status] == "4" or params[:t_status] == "5" #dotpay states for cancellation and so on
-        dotpay_pl_payment_cancel(params)
+        dotpay_pl_payment_cancel(params, @order)
       elsif params[:t_status] == "1"  #dotpay state for starting payment processing (1)
-        dotpay_pl_payment_new(params)
+        dotpay_pl_payment_new(params, @order)
       end
       render :text => "OK"
     else
@@ -74,27 +74,27 @@ class Gateway::DotpayPlController < Spree::BaseController
   end
 
   # Completed payment process
-  def dotpay_pl_payment_success(params)
-    @order.payment.started_processing
-    if @order.total.to_f == params[:amount].to_f
-      @order.payment.complete
+  def dotpay_pl_payment_success(params, order)
+    order.payment.started_processing
+    if order.total.to_f == params[:amount].to_f
+      order.payment.complete
     end
 
-    @order.finalize!
+    order.finalize!
 
-    @order.next
-    @order.next
-    @order.save
+    order.next
+    order.next
+    order.save
   end
 
   # payment cancelled by user (dotpay signals 3 to 5)
-  def dotpay_pl_payment_cancel(params)
-    @order.cancel
+  def dotpay_pl_payment_cancel(params, order)
+    order.cancel
   end
 
-  def dotpay_pl_payment_new(params)
-    @order.payment.started_processing
-    @order.finalize!
+  def dotpay_pl_payment_new(params, order)
+    order.payment.started_processing
+    order.finalize!
   end
 
 end
