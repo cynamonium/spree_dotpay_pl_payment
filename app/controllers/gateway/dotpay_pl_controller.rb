@@ -53,7 +53,7 @@ class Gateway::DotpayPlController < Spree::BaseController
   # validating dotpay message
   def dotpay_pl_validate(gateway, params, remote_ip)
 
-    param_args = (params[:PIN].nil? ? "" : params[:PIN]) + ":" +
+    param_args = "oasOjteabUtgusdo:" +
       (params[:id].nil? ? "" : params[:id]) + ":" +
       (params[:control].nil? ? "" : params[:control]) + ":" +
       (params[:t_id].nil? ? "" : params[:t_id]) + ":" +
