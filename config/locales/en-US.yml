@@ -8,7 +8,8 @@ en:
   language: Language
   dotpay_pl: Payment
   dotpay_pl_submit: "Pay and place order"
-  pin: "PIN"
+  pin: "Password"
+  urlc_pin: "URLC PIN"
   dotpay_server_1: "Dotpay.pl server IP"
   dotpay_server_2: "Dotpay.pl server IP"
   Address: Address
