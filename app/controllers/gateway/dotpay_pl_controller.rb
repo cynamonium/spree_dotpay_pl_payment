@@ -75,9 +75,9 @@ class Gateway::DotpayPlController < Spree::BaseController
 
   # Completed payment process
   def dotpay_pl_payment_success(params, order)
-    order.payment.started_processing
+    order.payments.first.started_processing!
     if order.total.to_f == params[:amount].to_f
-      order.payment.complete
+      order.payments.first.complete
     end
 
     order.finalize!
@@ -93,7 +93,7 @@ class Gateway::DotpayPlController < Spree::BaseController
   end
 
   def dotpay_pl_payment_new(params, order)
-    order.payment.started_processing
+    order.payments.first.started_processing!
     order.finalize!
   end
 
