@@ -60,7 +60,6 @@ class Gateway::DotpayPlController < Spree::BaseController
       (params[:code].nil? ? "" : params[:code]) + ":::" +
       (params[:t_status].nil? ? "" : params[:t_status])
       )
-      render :text => params
       render :text => calc_md5
 
       md5_valid = (calc_md5 == params[:md5])
