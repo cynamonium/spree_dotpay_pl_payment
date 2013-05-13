@@ -81,10 +81,10 @@ class Gateway::DotpayPlController < Spree::BaseController
       cash.amount = params[:amount].to_f
       cash.save
       order.payments.first.complete
+      order.payment_state = 'paid'
     end
 
     order.finalize!
-    order.payment_state = 'paid'
     order.next
     order.next
     order.save
